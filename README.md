@@ -1,3 +1,3 @@
-## 成绩课表
+## 小程序的使用方法
 - npm install
 - npm run dev
