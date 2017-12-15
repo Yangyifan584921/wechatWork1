@@ -1,0 +1,16 @@
+
+<view>
+    <view class="flex" style="border-bottom:2rpx solid #e1e1e1;margin-top: 86rpx;position: relative;align-items: center;line-height:30rpx;" wx:for="{{props.form}}" wx:for-item="itm">
+        <picker  style="font-size:30rpx;position:relative;" class=" selectPicker" bindchange="bindPickerChange" data-name="{{itm.name}}" data-index="{{index}}" value="{{state.selectValue[itm.name]}}" range="{{itm.options}}" range-key="key" >
+            <view class="picker selectPicker">
+                {{itm.options[state.selectValue[itm.name]].key}}
+            </view>
+        </picker>
+
+        <image src="../../images/down.png" class="down"/>
+
+
+
+    </view>
+
+</view>

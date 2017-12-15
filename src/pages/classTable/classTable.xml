@@ -1,0 +1,17 @@
+<view class="height-full" style="{{state.overflow ? 'overflow: hidden' : ''}}">
+
+    <!--<component key="Update"/>-->
+    <component key="TimeTable"/>
+    <view class="mask z-index-3" wx:if="{{state.showMenu}}" bindtap="handleShowMenu"/>
+
+    <view class="position-fixed menu-modal z-index-3" wx:if="{{state.showMenu}}" catchtap="handleShowMenu">
+        <view class="menu-modal-item border-bottom-thin flex center-v" bindtap="handleChoose">
+            <image class="icon-image menu-modal-item-icon" src="../../images/choose.png"/>
+            <view>选择班级</view>
+        </view>
+        <view class="menu-modal-item flex center-v" bindtap="handleFeedback">
+            <image class="icon-image menu-modal-item-icon" src="../../images/ask.png"/>
+            <view>问题反馈</view>
+        </view>
+    </view>
+</view>

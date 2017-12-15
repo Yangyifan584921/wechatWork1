@@ -1,0 +1,56 @@
+<view class="overflow-hidden">
+    <view class="root-wrap">
+
+        <!--已选择的学校-->
+        <view class="header-wrap flex font-size-40" style="color: #93a3b1;" bindtap="handleNavigateBack">
+            <view style="margin-right: 10rpx; line-height: 68rpx;">
+                <image src="../../images/left-corner.png" style="height: 40rpx;width: 40rpx;"/>
+            </view>
+            <view>
+                {{state.schoolName}}
+            </view>
+        </view>
+
+        <!--登录信息-->
+        <view class="form-wrap">
+            <form bindsubmit="handleBind">
+                <view class="input-item">
+                    <view class="sub-title font-size-40 text-gradient">账号</view>
+                    <input name="loginName" placeholder-class="input-placeholder" type="text"
+                           placeholder="{{state.focusOn == 'loginName'?'':state.loginNamePlaceholder}}"
+                           bindfocus="handleInputFocus"  data-input-type="loginName"/>
+                    <view class="tips-info" wx:if="{{state.passwordError}}">账号或密码错误</view>
+                </view>
+                <view class="input-item">
+                    <view class="sub-title font-size-40 text-gradient">密码</view>
+                    <input name="password" placeholder-class="input-placeholder" type="text"
+                           placeholder="{{state.focusOn == 'password'?'':state.passwordPlaceholder}}"
+                           bindfocus="handleInputFocus" data-input-type="password"/>
+                    <view class="tips-info" wx:if="{{state.passwordError}}">账号或密码错误</view>
+                </view>
+                <view class="input-item position-relative" wx:if="{{state.haveCaptcha}}" style="margin-bottom: 0;">
+                    <view class="sub-title font-size-40 text-gradient" placeholder-class="input-placeholder">验证码</view>
+                    <input name="captcha" type="text" bindfocus="handleInputFocus"/>
+                    <view bindtap="getCaptcha">
+                        <image class="position-absolute captcha z-index-2" src="{{state.captchaSrc}}"/>
+                    </view>
+                </view>
+                <view class="tips-info" wx:if="{{state.captchaError}}">验证码错误</view>
+                <view class="submit-wrap" style="margin-top: 120rpx;">
+                    <button class="button" formType="submit" loading="{{state.isLoaded}}" disabled="{{state.isLoaded}}">
+                        确定
+                    </button>
+
+                    <!--user info-->
+                    <view class="flex flex-column center user-info-wrap gray-color">
+                        <view>由萌小助提供</view>
+                        <view class="flex" bindtap="handleToAgreementPage">
+                            查询表示同意
+                            <view class="color-71ddda">《用户服务协议》</view>
+                        </view>
+                    </view>
+                </view>
+            </form>
+        </view>
+    </view>
+</view>

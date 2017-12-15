@@ -1,0 +1,142 @@
+<view>
+    <component key="LessonDetail"/>
+    <component key="LessonPicker"/>
+
+    <view class="position-relative">
+        <view class="position-fixed z-index-2 header-table width-full">
+            <view class="container flex center white-color background-pure"
+                  style="height: 70rpx;">
+                <view class="flex-1"/>
+                <view class="flex-1 flex center" bindtap="handleLessonPicker">
+                    <view>第{{state.currentWeek}}周</view>
+                    <view class="icon-caret" style="margin-top: -8rpx; margin-left: 10rpx;"/>
+                </view>
+                <view class="flex-1 flex justify-end" bindtap="handleShowMenu">
+                    <image src="../../images/menu.png" style="width: 20px;height: 20px;"/>
+                </view>
+            </view>
+            <view class="container flex center height-80 white-color background-pure">
+
+                <view class="flex center" style="height: 60%; border: 2rpx solid #fff; border-radius: 4px;">
+                    <view style="padding: 0 20rpx"
+                          class="flex center height-full {{state.switchDayWeek ? '':'selected'}}"
+                          bindtap="handleSwitchDayWeeks">日</view>
+                    <view style="padding: 0 20rpx"
+                          class="flex center height-full {{state.switchDayWeek ? 'selected':''}}"
+                          bindtap="handleSwitchDayWeeks">周</view>
+                </view>
+            </view>
+            <view class="flex background-pure height-80 white-color">
+                <view class="flex-1 flex center">{{state.lessonMonth}}月</view>
+
+                <view class="flex-1 flex center">一</view>
+                <view class="flex-1 flex center">二</view>
+                <view class="flex-1 flex center">三</view>
+                <view class="flex-1 flex center">四</view>
+                <view class="flex-1 flex center">五</view>
+                <view class="flex-1 flex center">六</view>
+                <view class="flex-1 flex center">日</view>
+            </view>
+            <view wx:if="{{!state.switchDayWeek}}" style="background-color:#fff;">
+                <view class="flex center width-full height-80 border-bottom-thin gray-color"
+                      bindtap="handleDayOfWeek">
+                    <view class="flex-1 flex center">日期</view>
+                    <block wx:for="{{state.currentSevenDate}}" >
+                        <view class="flex-1 flex center height-full {{ index === state.currentTargetIdx ? 'selected-tips':''}}"
+                              data-day-of-week="{{index}}">
+                            {{item}}
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+
+
+        <view class="section-table" style="margin-top: {{state.imgs.length ? '128rpx' : '313rpx'}}">
+            <!--周课表-->
+            <view wx:if="{{state.switchDayWeek}}">
+                <view wx:if="{{!state.imgs.length}}" class="flex" style="margin-top: -80rpx;">
+                    <view class="height-full gray-color" style="width: 90rpx; border-right: 2rpx solid #eee">
+                        <block wx:for="{{state.classSum}}">
+                            <view class="flex center" style="height: 100rpx;">
+                                {{item}}
+                            </view>
+                        </block>
+                    </view>
+
+                    <!--具体课程项-->
+                    <view class="position-relative">
+                        <block wx:for="{{state.lessons}}">
+                            <view class="position-absolute lessons-item z-index-1"
+                                  style="top: {{(item.beginClass - 1) * 100}}rpx; left: {{(item.dayOfWeek - 1) * 94}}rpx; height: {{(item.endClass > item.beginClass ? item.endClass - item.beginClass + 1 : 1) * 100}}rpx"
+                                  bindtap="handleLessonItemDetail" data-lesson-detail="{{item}}">
+                                <view class="day-lesson-box text-multiple-ellipsis height-full {{item.dayOfWeek == 1 || item.dayOfWeek == 4 || item.dayOfWeek == 7 ? 'lessons-item-bg': ''}} {{item.dayOfWeek  == 2|| item.dayOfWeek == 5 ? 'lessons-item-bg-3':''}} {{item.dayOfWeek  == 3|| item.dayOfWeek == 6 ? 'lessons-item-bg-2':''}} {{((item.endClass > item.beginClass ? item.endClass - item.beginClass + 1 : 1) * 100) === 100 ? 'text-ellipsis-2' :'text-ellipsis-5'}} ">
+                                    {{item.name}}
+                                    <block wx:if="{{item.location}}">
+                                        @{{item.location}}
+                                    </block>
+                                </view>
+                            </view>
+                        </block>
+                        <view class="position-absolute flex height-full " style="top: 0; left: 0;">
+                            <view class="column-item flex-1"/>
+                            <view class="column-item flex-1"/>
+                            <view class="column-item flex-1"/>
+                            <view class="column-item flex-1"/>
+                            <view class="column-item flex-1"/>
+                            <view class="column-item flex-1"/>
+                        </view>
+                    </view>
+                </view>
+                <view wx:else style="margin-top: 250rpx;">
+                    <image wx:for="{{state.imgs}}" src="{{item}}" mode="aspectFit" style="width: 100%;"/>
+                </view>
+            </view>
+            <!--日课表-->
+            <view wx:else>
+                <view>
+                    <view wx:for="{{state.dayLessons}}" >
+                        <view class="flex center-v border-bottom-thin gray-color {{item.noLesson ? 'day-lesson-item-2':'day-lesson-item-1'}} {{item.noLesson ? ' date-border-3' : 'date-border-'+item.colorType}}">
+                            <view class="height-full flex flex-column center day-lesson"
+                                  style="width: 80rpx; border-right:2rpx solid #f1f1f1;" wx:if="{{item.noLesson}}">
+                                <block>
+                                    <view>
+                                        {{item.beginClass}}-{{item.endClass.length ? item.endClass.length : item.endClass}}
+                                    </view>
+                                </block>
+                            </view>
+                            <view class="height-full flex flex-column center day-lesson"
+                                  style="width: 88rpx; border-right:2rpx solid #f1f1f1;" wx:else="">
+                                <block>
+                                    <view class="flex-1 flex center">{{item.beginClass}}</view>
+                                    <view class="flex-1 flex center">{{item.endClass}}</view>
+                                </block>
+                            </view>
+                            <view  wx:if="{{item.noLesson}}" class="flex flex-column lesson-title" style="padding-left: 50rpx;">
+                                无课
+                            </view>
+                            <view class="flex flex-column " style="padding-left: 50rpx;width:670rpx;"  wx:else>
+                                <view class="flex">
+                                    <view class="lesson-title">课程</view>
+                                    <view class="lesson-font">{{item.name}}</view>
+                                </view>
+                                <view class="flex">
+                                    <view class="lesson-title">教师</view>
+                                    <view class="lesson-font">{{item.teacher || '无'}}</view>
+                                </view>
+                                <view class="flex">
+                                    <view class="lesson-title">教室</view>
+                                    <view class="lesson-font">{{item.location || '无'}}</view>
+                                </view>
+                                <view class="flex">
+                                    <view class="lesson-title">时间</view>
+                                    <view class="lesson-font">{{item.beginClass}}-{{item.endClass}} {{item.beginTime}}-{{item.endTime}}</view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

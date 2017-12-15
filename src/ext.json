@@ -1,0 +1,37 @@
+{
+  "extEnable": true,
+  "extAppid": "wxa81a105dbab8aeb9",
+  "ext": {
+    "entrypoint": "https://v2m-test.mengxiaozhu.cn",
+    "name": "wechat",
+    "loginPath": "/applet/2/component-login",
+    "openid": "gh_2dd9eb176eca",
+    "appid": "wxa81a105dbab8aeb9",
+    "school": {
+      "id": 1,
+      "name": "厦门大学"
+    },
+    "schools": [
+      {
+        "id": 421,
+        "name": "东北农业大学"
+      },
+      {
+        "id": 1,
+        "name": "厦门大学"
+      }
+    ],
+    "mp": {
+      "name": "厦大助手"
+    },
+    "attr": {
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#64D3DD",
+    "navigationBarTitleText": "成绩课表",
+    "navigationBarTextStyle": "#fff",
+    "backgroundColor": "#fff"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "pages":[
+    "pages/startup/startup",
+    "pages/index/index",
+    "pages/agreement/agreement",
+    "pages/score/score",
+    "pages/feedback/feedback",
+    "pages/selectSchool/selectSchool",
+    "pages/bind/bind",
+    "pages/gpa/gpa",
+    "pages/selectCalculator/selectCalculator",
+    "pages/lesson/lesson",
+    "pages/cet/cet",
+    "pages/cetResult/cetResult",
+    "pages/failExam/failExam",
+    "pages/samePage/samePage",
+    "pages/classTable/classTable",
+    "pages/classChoose/classChoose",
+    "pages/iframe/iframe"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#64D3DD",
+    "navigationBarTitleText": "萌小助",
+    "navigationBarTextStyle":"#fff",
+    "backgroundColor": "#fff"
+  }
+
+}

@@ -1,0 +1,38 @@
+<view class="font-primary-color">
+    <component key="Loading"/>
+    <!--四六级功能切换-->
+    <view class="flex">
+        <view class="menu-item">准考证查询</view>
+    </view>
+
+    <!--输入查询信息-->
+    <view class="query-wrap">
+        <!--准考证号查询-->
+        <view>
+            <form bindsubmit="query">
+                <view class="margin-bottom-86">
+                    <input name="studentName"   type="text" class="width-full studentName" placeholder="请输入姓名" value="{{state.studentName}}" bindinput="blur1" data-input-type="studentName" />
+                </view>
+
+                <view class="margin-bottom-86">
+                    <input name="studentNumber"   type="text" class="width-full studentNumber" placeholder="请输入准考证号" value="{{state.studentNumber}}" bindinput="blur2" data-input-type="studentNumber"  disabled="{{state.disableInp}}"/>
+                </view>
+
+                <view class="flex input-item position-relative captcha-box" wx:if="{{state.captchaSrc}}"  style="margin-bottom: 0;">
+                    <input name="captcha" type="text"  placeholder="请输入验证码" style="width: 100%;"/>
+                    <view >
+                        <image class="position-absolute captcha z-index-2 captcha-img" src="{{state.captchaSrc}}" style="width:138rpx;  height:51rpx ;position: absolute;  bottom:0;  right:0;" bindtap="fetchCaptcha"/>
+                    </view>
+                </view>
+
+                <button formType="submit" class="button margin-top-140" disabled="{{state.disable?'true':''}}" loading="{{state.isload}}">查询</button>
+            </form>
+
+
+
+            <view class="help" bindtap="helpSearch">忘记准考证号？</view>
+        </view>
+
+
+    </view>
+</view>

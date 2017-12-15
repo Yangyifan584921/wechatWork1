@@ -1,0 +1,17 @@
+<view>
+    <!-- header -->
+    <view class="flex flex-column center background-gradient-reverse white-color header">
+        <view>当前仅支持百分制GPA=∑(单科绩点×学分)÷∑学分</view>
+        <view>请根据具体情况选择算法</view>
+    </view>
+    <view>
+        <block wx:for="{{state.rules}}">
+            <view class="section" data-index="{{index}}" bindtap="handleSelectRule">
+                <view class="section-text bold">{{item.name}}</view>
+                <view class="section-text">
+                    {{item.desc}}
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

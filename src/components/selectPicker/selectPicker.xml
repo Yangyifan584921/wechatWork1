@@ -1,0 +1,7 @@
+<view class="section">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{props.form}}">
+        <view class="picker">
+            {{props.form[index]}}
+        </view>
+    </picker>
+</view>

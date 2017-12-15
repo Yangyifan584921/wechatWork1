@@ -1,0 +1,27 @@
+<view class="mask z-index-3" wx:if="{{state.show}}" bindtap="hide">
+    <view class="score-detail-model position-absolute flex flex-column center" wx:if="{{state.show}}">
+        <view class="border-bottom-thin flex flex-column center width-full">
+            <view class="score-detail-header">{{state.name}}</view>
+            <view class="flex score-detail-item width-full">
+                <view class="score-detail-item-sub flex-1 flex justify-end">地点 :</view>
+                <view class="flex-2 flex justify-start">{{state.location}}</view>
+            </view>
+            <view class="flex score-detail-item width-full">
+                <view class="score-detail-item-sub flex-1 flex justify-end">教师 :</view>
+                <view class="flex-2 flex justify-start">{{state.teacher}}</view>
+            </view>
+            <view class="flex score-detail-item width-full">
+                <view class="score-detail-item-sub flex-1 flex justify-end">时间 :</view>
+                <view class="flex-2 justify-start">{{state.time}}</view>
+            </view>
+            <view class="flex score-detail-item width-full" style="margin-bottom: 30rpx;">
+                <view class="score-detail-item-sub flex-1 flex justify-end">周次 :</view>
+                <view class="flex-2 flex justify-start">{{state.weeks}}</view>
+            </view>
+        </view>
+        <view class="height-80 flex center width-full" style="color: #6ddbff;" bindtap="hide">
+            <view>确定</view>
+        </view>
+    </view>
+</view>
+

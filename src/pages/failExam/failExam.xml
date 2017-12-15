@@ -1,0 +1,44 @@
+<view class="{{state.iphoneX?'bottom margin30':'margin30'}}" style="overflow: hidden; height: 100%;" >
+    <view class="header-father">
+        <view class="header">
+            <input class="search-input width-full" placeholder="请输入课程名称,查询此课程挂科率"
+                   placeholder-class="input-placeholder-style" bindinput="search"/>
+        </view>
+    </view>
+
+
+    <view class="main" style="height: calc(100% - 92rpx); overflow-y: scroll;">
+
+        <view class="flex main-brand">
+            <view class="main-header-fail">挂科率</view>
+            <view class="main-header-mid">+</view>
+            <view class="main-header-top">TOP10</view>
+        </view>
+
+        <view class="flex main-header">
+            <view class="main-footer-lesson">课程</view>
+            <view class="main-footer-fail">挂科率</view>
+            <view class="main-footer-trust">可信度</view>
+        </view>
+
+        <view class="main-footer">
+            <view class="flex main-footer-item" wx:for="{{state.lessons}}" wx:if="{{state.lessons.length}}">
+                <view class="main-footer-failname-box">
+                    <view class="main-footer-failname">{{item.lesson}}</view>
+                </view>
+                <view class="main-footer-failnumber">
+                    {{item.failrate}}
+                </view>
+                <view class="main-footer-trustnumber">
+                    {{item.amount}}
+                </view>
+            </view>
+            <view class="none-fail" wx:if="{{!state.lessons.length}}">暂无数据</view>
+
+
+
+
+
+        </view>
+    </view>
+</view>

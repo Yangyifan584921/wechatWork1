@@ -1,0 +1,24 @@
+
+<view class="height-full" style="{{state.overflow ? 'overflow: hidden' : ''}}">
+
+    <component key="Update"/>
+    <component key="TimeTable"/>
+    <view class="mask z-index-3" wx:if="{{state.showMenu}}" bindtap="handleShowMenu"/>
+    <view class="position-relative">
+    </view>
+
+    <view class="position-absolute menu-modal z-index-3" wx:if="{{state.showMenu}}" style="position:fixed" catchtap="handleShowMenu">
+        <view class="menu-modal-item border-bottom-thin flex center-v" bindtap="handleUpdate">
+            <image class="icon-image menu-modal-item-icon" src="../../images/refresh.png"/>
+            <view>更新</view>
+        </view>
+        <view class="menu-modal-item border-bottom-thin flex center-v" bindtap="handleLogout">
+            <image class="icon-image menu-modal-item-icon" src="../../images/logout.png"/>
+            <view>注销</view>
+        </view>
+        <view class="menu-modal-item flex center-v" bindtap="handleFeedback">
+            <image class="icon-image menu-modal-item-icon" src="../../images/ask.png"/>
+            <view>问题反馈</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,186 @@
+.home-container {
+  height:100%;
+  overflow:hidden;
+}
+
+.menu-item {
+   width: 247rpx;
+   height: 228rpx;
+
+}
+
+.nav-item{
+   border-width:0 2rpx 2rpx 0;
+   border-style:solid;
+   border-color:#F9F9F9;
+   width: 249rpx;
+}
+
+.nav-right {
+  border-width:0 0 2rpx 0;
+}
+
+.index-menu-icon {
+   width:76rpx;
+   height:82.8rpx;
+   margin: 61.2rpx auto 0;
+}
+
+.flexCol{
+  flex-direction: column
+}
+
+.flexWrap{
+  flex-wrap: wrap
+}
+
+.func-items {
+  justify-content: flex-start !important;
+}
+
+.menu-item-title {
+   margin-bottom: 30rpx;
+   text-align: center;
+   font-family: PingFangTC-Medium;
+}
+
+.banner{
+  width: 100%;
+  height: 176rpx;
+  position: relative;
+ border-bottom:6rpx solid #F9F9F9;
+}
+.bannerImage{
+  width: 100%;
+  height: 176rpx;
+}
+
+.bannerFontTop{
+  position: absolute;
+  top: 48rpx;
+  left:48rpx;
+  font-size: 32rpx;
+  color: #82898F;
+  font-family: PingFangSC-Medium;
+  z-index:10
+}
+.bannerFontBot{
+  position: absolute;
+  top: 96rpx;
+  left:48rpx;
+  font-size: 32rpx;
+  color: #82898F;
+  font-family: PingFangSC-Regular;
+  z-index:10
+}
+
+
+.func-container {
+  height: calc(100% - 256rpx);
+  overflow-y: scroll;
+}
+
+
+.tarBar{
+    width:100%;
+    height:80rpx;
+    position:fixed;
+    left:0;
+    bottom:0;
+}
+
+.tarBarX{
+    width:100%;
+    height:52rpx;
+    position:fixed;
+    left:0;
+    bottom:0;
+}
+
+.borderStyle{
+    width:100%;
+    height:4rpx;
+    background-image:-webkit-linear-gradient(right,#71DDDA, #5BCEE2,#45BEE9);
+}
+
+.flex{
+    display:flex;
+    justify-content:space-between;
+}
+
+.flex-column{
+    display:flex;
+    flex-direction:colunmn
+}
+
+.tarBarFunc{
+    width:50%;
+    text-align:center;
+
+}
+
+.func{
+    color:#868D92;
+}
+
+.tarBarMine{
+    width:50%;
+    text-align:center;
+}
+
+.mine{
+    color:#868D92;
+}
+
+.is-active{
+    color:#71DDDA;
+}
+
+.selectSchool,.bindEdu{
+    width:100%;
+    height:152rpx;
+    border-bottom:4rpx solid #F9F9F9;
+}
+
+.school,.edu{
+    font-size:28rpx;
+    color:#8998A9;
+    margin-top:40rpx;
+    margin-left:48rpx;
+}
+
+.schoolName,.eduName{
+    font-size:28rpx;
+    color:#82898F;
+    margin-top:8rpx;
+    margin-left:48rpx;
+}
+
+.changeSchool,.changeBind{
+    line-height:152rpx;
+    font-size:28rpx;
+    color:#000000;
+    width:8rpx;
+    height:14rpx;
+    margin-right:80rpx;
+    padding-left:30rpx;
+}
+
+.img{
+    width:16rpx;
+    height:22rpx;
+    padding:0 20rpx 0 20rpx;
+}
+
+.bottom{
+    padding-bottom: 68rpx;
+}
+
+.bottom-text_container {
+    height: 76rpx;
+    line-height: 76rpx;
+}
+
+.index-bottom {
+  background: #FFFFFF;
+}

@@ -1,0 +1,6 @@
+<!-- startup.wxml -->
+<view class="height-full">
+    <image src="../../../images/startup.png"
+           style="height: 100%; width: 100%;"
+           mode="scaleToFill"/>
+</view>

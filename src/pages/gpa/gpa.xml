@@ -1,0 +1,100 @@
+<view class="position-relative" style="overflow: hidden; height: 100%;">
+    <!-- header -->
+    <view class="position-fixed z-index-1 width-full flex flex-column background-pure white-color"
+          style="top: 0; left: 0; height: 310rpx;">
+        <view class="flex-1 flex container gpa-header">
+            <view class="flex-1 flex center justify-start" bindtap="handleToRulesPage">
+                <view>{{state.algorithmText}}</view>
+                <image src="../../images/drop-down-white.png" style="height: 20px; width: 20px; margin-top: -4px;"/>
+            </view>
+            <view class="flex-1 flex center">GPA计算器</view>
+            <view class="flex-1 flex center justify-end" bindtap="handleRest">重置</view>
+        </view>
+        <view class="flex-2 flex center">
+            <view style="font-size: 96rpx;">{{state.gpa}}</view>
+        </view>
+        <view class="flex-1 flex">
+            <view class="flex-1 flex center">课程学分</view>
+            <view class="flex-1 flex center">成绩</view>
+            <view class="flex-1 flex center">绩点</view>
+        </view>
+    </view>
+
+    <!-- content -->
+    <view style="margin-top: 310rpx; height: calc(100% - 310rpx); overflow-y: scroll;">
+        <block wx:for="{{state.scores}}" wx:for-index="termIndex">
+            <view class="width-full flex center height-80 term-text">{{item.term.cn}}</view>
+            <view  wx:for="{{item.scores}}" wx:for-index="courseIndex"
+                   class="flex flex-column {{courseIndex % 2 > 0 ? '' : 'bg-gap-color'}}"
+                   style="height: 160rpx; padding: 10rpx 30rpx;">
+                <view class="flex-1 flex center table-text-bold {{item.selected ? '' : 'disabled-color'}}">
+                    <view class="flex-1 flex center justify-start" style="overflow: hidden;">
+                        <view class="ellipse-text">
+                            {{item.name}}
+                        </view>
+                    </view>
+                    <view class="flex-1 flex center">
+                        <view>原始成绩</view>
+                        <view class="text-padding">{{item.originalScore}}</view>
+                    </view>
+                    <view class="flex-1 flex center justify-end"
+                          style="width: 20rpx;height: 40rpx;"
+                          bindtap="handleCheckBox"
+                          data-term-idx="{{termIndex}}"
+                          data-course-idx="{{courseIndex}}">
+                        <view
+                                style="width: 35rpx; height: 35rpx; border-radius: 6rpx; border: 2rpx solid #eee"
+                                class="flex center {{item.selected ? 'choice-bg-color' : 'check-icon-disable'}}">
+                            <view wx:if="{{item.selected}}" class="check-icon"/>
+                        </view>
+                    </view>
+                </view>
+                <view class="flex-1 flex center table-text {{item.selected ? '' : 'disabled-color'}}">
+                    <view class="flex-1 flex center justify-start">
+                        <picker class="text-padding"
+                                mode="selector" range="{{state.customGPA}}"
+                                data-term-index="{{termIndex}}"
+                                data-course-index="{{courseIndex}}"
+                                bindchange="handleCreditPicker"
+                                disabled="{{!item.selected}}">
+                            <view class="flex">
+                                学分
+                                {{item.point}}
+                                <view class="drop-down-icon {{item.selected?'':'drop-down-icon-disable'}}"/>
+                            </view>
+                        </picker>
+
+
+                    </view>
+                    <view class="flex-1 flex center">
+                        <picker
+                                class="text-padding"
+                                mode="selector" range="{{state.customScores}}"
+                                data-term-index="{{termIndex}}"
+                                data-course-index="{{courseIndex}}"
+                                bindchange="handleScorePicker"
+                                disabled="{{!item.selected}}"
+                        >
+                            <view class="flex">
+                                换算成绩
+                                {{item.score}}
+                                <view class="drop-down-icon {{item.selected?'':'drop-down-icon-disable'}}"/>
+                            </view>
+                        </picker>
+
+                    </view>
+                    <view class="flex-1 flex justify-end">
+                        <view>绩点</view>
+                        <view class="text-padding">{{item.gpa}}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+
+    <!--为保持页面底部不被遮挡所创建的空内容元素-->
+    <view class="flex center gray-color width-full"  style="height: 80rpx;"/>
+    <view style="background: #fff;  bottom: 0; left: 0; " class="position-fixed width-full flex center">
+        <view class="height-80 white-color width-full flex center {{state.iphoneX?'bottom':''}} {{state.calculateState ? 'calculate-active' : 'calculate-disabled'}}" bindtap="handleCalculate">计算</view>
+    </view>
+</view>

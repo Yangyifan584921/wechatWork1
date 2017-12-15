@@ -1,0 +1,33 @@
+<view class="mask z-index-3" wx:if="{{state.show}}" bindtap="close">
+    <view class="score-detail-model position-absolute flex flex-column center" wx:if="{{state.show}}">
+        <view class="width-full border-bottom-thin flex center reset-disable justify-end" style="height: 100rpx;">
+            <view class="height-full flex center" style="width: 70%;"
+                  wx:if="{{state.setCurrentTermWeek || state.isSetting}}">设定当前学期/周次</view>
+            <view wx:if="{{!state.setCurrentTermWeek && !state.isSetting}}"
+                  class="flex justify-end" style="margin-right: 15px; color: #71DDDA;" catchtap="handlePickerSet">设置
+            </view>
+            <view wx:if="{{state.isSetting}}" catchtap="resetCurrentWeek"
+                  class="flex center justify-end height-full" style="margin-right: 15px; color: #71DDDA;">恢复默认
+            </view>
+        </view>
+        <view class="border-bottom-thin flex flex-column center width-full" style="height: 320rpx; overflow: hidden;" catchtap="noHide">
+            <picker-view indicator-style="height: 50px; background: rgba(240,251,255,.4);"
+                         style="width: 100%; height: 300px;" value="{{state.selectedItem}}" bindchange="handlePicker" >
+                <picker-view-column class="flex-2 center">
+                    <view wx:for="{{state.lessonData}}"  class="flex center" style="height: 50px;color:{{state.firstComeInSelectedItem[0] == index ? '#FFA053':''}};">{{item.term.cn}}</view>
+                </picker-view-column>
+                <picker-view-column class="center" style="border-left:1px solid #eee" wx:if="{{!state.isImage}}">
+                    <view wx:for="{{state.weeks}}"
+                          class="flex center" style="height: 50px; color:{{state.firstComeInSelectedItem[1] == index ? '#FFA053':''}};">第{{item}}周</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+        <view class="height-80 flex center width-full" style="color: #71DDDA;">
+            <view wx:if="{{state.isSetting}}" class="flex-1" style="text-align: center;" catchtap="close">取消</view>
+            <view wx:if="{{state.setCurrentTermWeek || state.isSetting}}" class="flex-1 height-full flex center"
+                  catchtap="handleConfirm">保存</view>
+            <view class="width-full height-full flex center" wx:if="{{!state.setCurrentTermWeek && !state.isSetting }}"
+                  catchtap="handleConfirm">完成</view>
+        </view>
+    </view>
+</view>

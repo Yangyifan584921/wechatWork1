@@ -1,0 +1,66 @@
+<view>
+    <component key="Loading"/>
+    <view class="padding38" wx:if="{{state.hover && state.title}}" >
+        <view class="com-title">
+            <view class="com-title-font">{{state.title}}</view>
+        </view>
+        <form bindsubmit="query">
+
+            <component key="Select" wx:for="{{state.form}}" />
+
+            <view wx:for="{{state.form}}">
+
+
+                <view class="com-same com-name">
+                    <input name="{{item.name}}" wx:if="{{item.type=='text'}}" placeholder="{{item.text}}" />
+                </view>
+
+
+                <view class=" flex com-same com-captcha clearfix" wx:if="{{item.type=='captcha'}}">
+                    <input name="{{item.name}}" class="verify" placeholder="请输入验证码" />
+                    <view class="captcha-box" bindtap="getCaptcha">
+                        <image class="captcha-img" src="{{state.captchaImg}}" />
+                    </view>
+                    <view class="tips-info" wx:if="{{state.errorCaptcha}}">
+                        <view>验证码错误</view>
+                    </view>
+                </view>
+            </view>
+
+
+
+            <button class="button margin120" formType="submit" loading="{{state.isLoad}}">
+                {{state.buttonText}}
+            </button>
+        </form>
+    </view>
+
+
+    <!--结果页-->
+    <view class="com-result" wx:if="{{!state.hover}}">
+        <view class="flex query-computer" bindtap="handleBack">
+            <!--<view class="query-computer-icon"></view>-->
+            <image class="query-computer-icon" src="../../images/reSearch.png"/>
+            <view class="query-computer-font">重新查询</view>
+        </view>
+
+        <view wx:if="{{state.titles}}">
+            <view class="info-person">
+                <view wx:for="{{state.titles}}" class="font info-person-same info-person-name">{{item.key}}：{{item.value}}</view>
+            </view>
+
+            <view class="rule"></view>
+
+            <view class="info-exam" wx:for="{{state.lines}}">
+                <view class="font info-exam-same info-exam-no">{{item.key}}：{{item.value}}</view>
+            </view>
+
+            <button wx:if="{{state.lines.length==2}}" class="button gotoSearch" bindtap="gotoSearch" style="width:600rpx;height:80rpx;text-align:center">去查询</button>
+        </view>
+
+
+
+    </view>
+
+</view>
+

@@ -1,0 +1,22 @@
+<view>
+    <component key="Loading"/>
+    <view class="mask z-index-4" wx:if="{{state.hover||state.show}}"/>
+    <view wx:if="{{state.show}}" class="position-absolute z-index-4"
+          style="transform: translate(-50%, -50%); top: 50%; left: 50%; background: #fff; border-radius: 8rpx; padding-top: 80rpx;">
+        <view class="flex flex-column position-relative" style="width: 520rpx; height: 260rpx; padding: 0 40rpx;">
+            <view class="font-size-40 text-gradient" style="margin-bottom: 36rpx;">验证码</view>
+            <view class="flex-1 position-relative">
+                <input type="text" bindinput="onInput" style="height: 68rpx;"/>
+                <image class="position-absolute z-index-3" src="{{state.captchaSrc}}"
+                       style="width: 220rpx; height: 68rpx; top: 0; right: 0;"
+                       bindtap="onRefreshCaptcha"/>
+                <view class="tips-info" wx:if="{{state.errorCaptcha}}">
+                    <view>验证码错误</view>
+                </view>
+            </view>
+        </view>
+        <view class="flex center height-80" style="border-top: 2rpx solid #e1e1e1;" bindtap="onConfirm">
+            <view style="color: #77D4D0">确定</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,24 @@
+<view class="root-wrap">
+    <view class="flex center font-size-40 font-weight-bold gray-color">问题反馈</view>
+    <view>
+        <form bindsubmit="handleSubmit">
+            <view class="input-item-wrap">
+                <view style="margin-bottom: 10rpx;" class="gray-color">描述您遇到的问题</view>
+                <view class="border">
+                    <textarea name="question" style="width: 100%; height: 400rpx;"  bindblur="blur1"/>
+                </view>
+            </view>
+
+            <view class="input-item-wrap">
+                <view style="margin-bottom: 10rpx;" class="gray-color">留下您的联络信息</view>
+                <view>
+                    <input name="contact" type="text" bindinput="blur2"/>
+                </view>
+            </view>
+
+            <view>
+                <button class=" {{state.disable?'true':'button'}}" formType="submit" disabled="{{state.disable}}">提交</button>
+            </view>
+        </form>
+    </view>
+</view>

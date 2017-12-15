@@ -1,0 +1,87 @@
+@base: #868d92;
+
+@disable-color: rgba(128,128,128,.5)!important;
+
+.gpa-header {
+ background: rgba(255,255,255, .1);
+}
+
+.bg-gap-color {
+ background: #fafbfc;
+}
+
+.term-text {
+ color: @base;
+ font-size: 26rpx;
+}
+
+.table-text-bold {
+ color: #8998a9;
+ font-weight: bold;
+}
+
+.table-text {
+ color: @base;
+}
+
+.text-padding {
+ padding-left: 20rpx;
+}
+
+.disabled-color {
+ color: @disable-color;
+}
+
+/*如果常用，可以抽到组件css里*/
+.choice-bg-color {
+ background: #80d8fb;
+}
+
+.check-icon-disable {
+ border: 2rpx solid @disable-color;
+}
+
+.check-icon {
+ width: 60%;
+ height: 30%;
+
+ margin-bottom: 6rpx;
+
+ border-left: 2rpx solid #eee;
+ border-bottom: 2rpx solid #eee;
+
+ transform: rotate(-45deg);
+}
+
+.drop-down-icon {
+ width: 20rpx;
+ height: 20rpx;
+
+ /*如果做成组件的话，需要拿出来*/
+ margin-left: 20rpx;
+
+ border-left: 2rpx solid @base;
+ border-bottom: 2rpx solid @base;
+
+ transform: rotate(-45deg);
+}
+
+.drop-down-icon-disable {
+ border-left-color: @disable-color;
+ border-bottom-color: @disable-color;
+}
+
+.calculate-active {
+ border-top:2rpx solid #6DDBDB;
+ background: #ffffff;
+ color: #6DDBDB;
+}
+
+.calculate-disabled {
+ color: #b2b3b3;
+ border-top:2rpx solid #b2b3b3;
+}
+
+.bottom{
+ padding-bottom: 68rpx;
+}

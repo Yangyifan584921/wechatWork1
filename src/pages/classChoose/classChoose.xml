@@ -1,0 +1,22 @@
+<view class="{{state.iphoneX?'bottom padding15':'padding15'}}" style="overflow: hidden; height: 100%;">
+    <view class="search_father">
+        <view class="search">
+            <input class="search-input" placeholder="请输入班级名称"  placeholder-class="input-placeholder-style" bindinput="search"/>
+        </view>
+    </view>
+
+    <view style="height: calc(100% - 92rpx); overflow-y: scroll;">
+        <view class="class current-class" wx:if="{{state.choose_class}}">
+            <view class="current-class-title">当前班级</view>
+            <view class="class-name current-class-title-list">{{state.clazzName}}</view>
+        </view>
+
+        <view class="class all-class">
+            <view class="all-class-title">班级列表</view>
+            <view bindtap="onChoice">
+                <view class="class-name all-class-title-list" wx:for="{{state.list_arr}}"  data-clazzName="{{item.clazzName}}" data-id="{{item.id}}">{{item.clazzName}}</view>
+            </view>
+        </view>
+    </view>
+
+</view>

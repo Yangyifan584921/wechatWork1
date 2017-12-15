@@ -1,0 +1,27 @@
+
+    <view class="mask z-index-1" wx:if="{{state.show}}" bindtap="cancel"/>
+    <!--成绩详情-->
+    <view class="score-detail-model position-absolute flex flex-column center" wx:if="{{state.show}}">
+        <view class="border-bottom-thin flex flex-column center width-full">
+            <view class="score-detail-header">{{state.name}}</view>
+            <view class="flex score-detail-item width-full">
+                <view class="score-detail-item-sub flex-1 flex justify-end">排行 :</view>
+                <view class="flex-1 flex justify-start">{{state.rank}}</view>
+            </view>
+            <view class="flex score-detail-item width-full">
+                <view class="score-detail-item-sub flex-1 flex justify-end">学分 :</view>
+                <view class="flex-1 flex justify-start">{{state.point}}</view>
+            </view>
+            <view class="flex score-detail-item width-full">
+                <view class="score-detail-item-sub flex-1 flex justify-end">成绩 :</view>
+                <view class="flex-1 justify-start">{{state.score || '无'}}</view>
+            </view>
+            <view class="flex score-detail-item width-full" style="margin-bottom: 30rpx;">
+                <view class="score-detail-item-sub flex-1 flex justify-end">绩点 :</view>
+                <view class="flex-1 flex justify-start">{{state.gpa}}</view>
+            </view>
+        </view>
+        <view class="height-80 flex center width-full" style="color: #6ddbff;" bindtap="cancel">
+            <view>确定</view>
+        </view>
+    </view>

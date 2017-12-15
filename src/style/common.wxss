@@ -1,0 +1,320 @@
+/* common.wxss*/
+
+@import "components.wxss";
+.font{
+    line-height:1;
+}
+
+.flex {
+    display: flex;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.center-h {
+    justify-content: center;
+}
+
+.center-v {
+    align-items: center;
+}
+
+.justify-start {
+    justify-content: flex-start;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
+.center-between {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+.center-around {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.primary-font {
+    font-size: 28rpx;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+.flex-3 {
+    flex: 3;
+}
+
+.table-row {
+    height: 80rpx;
+}
+
+.height-60 {
+    height: 60rpx;
+}
+
+.height-80 {
+    height: 80rpx;
+}
+
+.table-row-color {
+    background: #fafafa;
+}
+
+.border {
+    border: 2rpx solid #e1e1e1;
+    border-radius: 8rpx;
+}
+
+.border-left {
+    border-left: solid 4rpx #e1e1e1;
+}
+.border-right {
+    border-right: solid 4rpx #e1e1e1;
+}
+.border-top {
+    border-right: solid 4rpx #e1e1e1;
+}
+.border-bottom {
+    border-bottom: solid 4rpx #F9F9F9;
+}
+
+.border-bottom-thin{
+    border-bottom: solid 2rpx #e1e1e1;
+}
+
+.table-head-color {
+    background: #ebfaff;
+}
+
+.white-color {
+    color: #fff;
+}
+
+.gray-color {
+    color: #A4A4A4;
+}
+
+.dark-blue-color {
+    color: #597fad;
+}
+
+.bg-dark-blue-color {
+    background-color: #597fad;
+}
+
+.bg-blue-color {
+    background-color: #4db7ff;
+}
+
+.container {
+    padding: 0 30rpx;
+}
+
+.root-wrap {
+   margin: 80rpx 80rpx 0;
+}
+
+.height-full {
+    height: 100%;
+}
+
+.width-full {
+    width: 100%;
+}
+
+.font-size-large {
+    font-size: 110rpx
+}
+
+.font-size-middle {
+    font-size: 80rpx;
+}
+
+.font-size-40 {
+    font-size: 40rpx;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.position-fixed {
+    position: fixed;
+}
+
+.active {
+    color: #4db7ff;
+    border-bottom: #4db7ff 4rpx solid;
+}
+
+.ellipse-text {
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+
+.text-gradient {
+    /*color: transparent;*/
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /*作用与 color: transparent 基本相同*/
+    background-image: -webkit-linear-gradient(left, #71DDDA, #5BCEE2, #45BEE9);
+}
+
+.background-gradient-color {
+    background-color: rgba(255,255,255,.5);
+}
+.background-pure{
+    background-color: #64D3DD;
+}
+.background-gradient {
+    background-image: -webkit-linear-gradient(left, #71DDDA, #5BCEE2, #45BEE9);
+}
+
+.background-gradient-reverse {
+    background-image: -webkit-linear-gradient(left, #45BEE9, #5BCEE2 ,#71DDDA);
+}
+
+.tips-info {
+    color: #FFA053;
+    font-size: 26rpx;
+}
+
+.border-radius {
+    border-radius: 20rpx;
+}
+
+/*debug*/
+.debug-border {
+    border: 1px solid red;
+}
+
+.z-index-1 {
+    z-index: 1;
+}
+
+.z-index-2 {
+    z-index: 2;
+}
+
+.z-index-3 {
+    z-index: 3;
+}
+
+.z-index-4 {
+    z-index: 4;
+}
+
+.mask {
+    position: fixed;
+    top: 0;  left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0, .4);
+}
+
+.overflow-hidden {
+    height: 100%;
+    overflow: hidden;
+}
+
+.icon-image {
+    width: 16px;
+    height: 17px;
+}
+
+.selected-font-color {
+    color: #6ddbff;
+}
+
+.font-primary-color {
+    color: #858c92;
+}
+
+.primary-background-color {
+    background: #64D3DD;
+}
+
+
+
+
+.loading-box{
+  width:200rpx;
+  height: 200rpx;
+  background: #858C96;
+  text-align: center;
+  position: absolute;
+  margin: auto;
+  top:0;
+  left:0;
+  right:0;
+  bottom: 0;
+  border-radius: 8rpx;
+}
+.loading-mask{
+  width: 60rpx;
+  height: 60rpx;
+  border-style:solid;
+  border-width: 4rpx;
+  border-color: #ffffff #ffffff #ffffff transparent;
+  border-radius: 50%;
+  margin: 40rpx auto;
+  animation: show 1s infinite;
+  z-index: 9999;
+}
+.loading-text,.success-text{
+  color: #ffffff;
+}
+@keyframes show {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.success-mask{
+  width: 60rpx;
+  height: 30rpx;
+  border-style:solid;
+  border-width: 4rpx;
+  margin: 40rpx auto 60rpx;
+  border-top-color: transparent;
+  border-bottom-color: #ffffff;
+  border-right-color: transparent;
+  border-left-color: #ffffff;
+  transform: rotate(-45deg);
+  z-index: 9999;
+  font-size: 20rpx;
+}
+

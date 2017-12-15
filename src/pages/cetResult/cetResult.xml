@@ -1,0 +1,80 @@
+<view class="font-primary-color">
+    <!--蒙层-->
+    <!--showMenu:弹出菜单，showEn:弹出入口框，show:弹出验证码框-->
+    <view class="mask z-index-1" wx:if="{{state.showMenu||state.showEn||state.show||state.showMask||state.loadingMask||state.successMask}}" bindtap="handleHideMenu"/>
+
+
+
+    <!--菜单-->
+        <view id="pageTop" class="flex justify-end center  height-80 container z-index-1 white-color marginLeft30" style="justify-content: space-between;">
+                <view class="flex  query-computer" bindtap="handleBack" >
+                    <image class="query-computer-icon" src="../../images/reSearch.png"/>
+                    <view class="query-computer-font">重新查询</view>
+                </view>
+        </view>
+    <!--分数圈-->
+    <view class=" center score-circle">
+        <view class="flex persion">
+            <view class="score-content center-v">{{state.total}}</view>
+            <view class="score-content center-v marginLeft32" wx:if="{{state.total==''}}">--</view>
+            <view class="score-disc center-v">{{state.type }}</view>
+            <view class="score-disc center-v marginLeft36" wx:if="{{state.total==''}}">总分</view>
+            <view class="waiting"></view>
+        </view>
+    </view>
+    <!--个人信息-->
+    <view class="flex score-person-content" wx:if="{{state.total!==''}}">
+        <p class="student-name">{{state.name}}</p>
+        <p class="studeng-number">{{state.ticketNumber}}</p>
+    </view>
+
+
+    <view class="flex score-person-content" wx:if="{{state.total==''}}">
+        <p class="student-name light">{{state.name}}</p>
+        <p class="studeng-number light">{{state.ticketNumber}}</p>
+    </view>
+    <!--各科分数-->
+    <view class="flex score-classify center-around" wx:if="{{state.total!==''}}">
+        <view class="flex score-class listen">
+            <p class="listen-score">{{state.listening}}</p>
+            <p class="listen-disc">听力</p>
+        </view>
+        <view class="cut-off cut-off-1"></view>
+        <view class="flex score-class read">
+            <p class="read-score">{{state.reading}}</p>
+            <p class="read-disc">阅读</p>
+        </view>
+        <view class="cut-off cut-off-2"></view>
+        <view class="flex score-class write">
+            <p class="write-score">{{state.writing}}</p>
+            <p class="write-disc">写作</p>
+        </view>
+    </view>
+
+
+    <view class="flex score-classify center-around" wx:if="{{state.total==''}}">
+        <view class="flex score-class">
+            <p class="listen-score">--</p>
+            <p class="listen-disc">听力</p>
+        </view>
+        <view class="cut-off cut-off-1"></view>
+        <view class="flex score-class">
+            <p class="read-score">--</p>
+            <p class="read-disc">阅读</p>
+        </view>
+        <view class="cut-off cut-off-2"></view>
+        <view class="flex score-class">
+            <p class="write-score">--</p>
+            <p class="write-disc">写作</p>
+        </view>
+    </view>
+
+
+    <!--查询失败显示内容-->
+    <view class="flex score-fail-content" wx:if="{{state.total==''}}">
+        <p class="fail-disc">查询人数较多，请耐心等待或稍后查看</p>
+        <p class="fail-disc fail-bottom">同时可在右上角菜单切换其他查询通道</p>
+    </view>
+
+
+</view>

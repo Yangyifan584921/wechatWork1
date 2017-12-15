@@ -1,0 +1,3 @@
+<view class="webview">
+    <web-view src="{{state.pagePath}}"></web-view>
+</view>

@@ -1,0 +1,4 @@
+<view class="loading-box" wx:if="{{state.show}}">
+    <view class="{{state.loading ? 'loading-mask' : 'success-mask'}}"></view>
+    <view class="loading-text">{{state.text}}</view>
+</view>

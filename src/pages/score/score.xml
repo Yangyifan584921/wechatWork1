@@ -1,0 +1,106 @@
+<view style="height:100%;overflow:hidden;">
+    <component key="update"/>
+    <component key="scoredetail"/>
+    <view class="mask z-index-1" wx:if="{{state.showMenu}}" bindtap="handleShowMenu"/>
+    <view style="height:100%">
+        <!--主内容-->
+        <view style="position:relative;z-index:2;">
+            <view id="pageTop"
+                  class="flex justify-end center height-80 container z-index-1 white-color background-pure">
+                <view class="flex-1">
+                    <navigator class="flex center" url="/pages/gpa/gpa" style="width:180rpx;">
+                        <image src="../../images/gpa-3.png" style="height: 15px; width: 18px; margin-right: 4rpx;"/>
+                        <view>GPA计算</view>
+                    </navigator>
+                </view>
+                <view class="flex center position-relative">
+                    <image class="position-relative" src="../../images/menu.png"
+                           style="height: 26px; width: 22px; overflow: visible;" bindtap="handleShowMenu">
+                    </image>
+                </view>
+            </view>
+        </view>
+        <!--<view class="flex center white-color background-gradient-reverse" style="height: 100rpx; font-size: 30rpx">-->
+        <!--<view class="flex-1 flex center" bindtap="handleGPA">GPA计算</view>-->
+        <!--<view style="width: 2rpx; background: rgba(255,255,255, 0.5); height: 60rpx"/>-->
+        <!--<view class="flex-1 flex center">职业测评</view>-->
+        <!--</view>-->
+        <view style="margin-top:-80rpx;height: calc(100% - 80rpx); overflow-y: scroll;" >
+            <view
+                    style="height: 100%;padding-top:80rpx;">
+                <block wx:for="{{state.tableData}}" wx:for-index="pageIndex">
+                    <view class="term-cn height-80 flex center width-full">
+                        {{item.term.cn}}
+                    </view>
+                    <view class="flex height-80"
+                          style="color: #8998a9; font-size: 26rpx; background: #f9f9f9;padding-right:12rpx;">
+                        <view class="flex-3 flex center">
+                            <text>课程</text>
+                        </view>
+                        <view class="flex-2 flex center">
+                            <text>类型</text>
+                        </view>
+                        <view class="flex-1 flex center">
+                            <text>学分</text>
+                        </view>
+                        <view class="flex-1 flex center">
+                            <text>成绩</text>
+                        </view>
+                    </view>
+                    <view wx:if="{{item.img.length}}">
+                        <view class="flex" wx:for="{{item.img}}" wx:for-item="source">
+                            <image src="{{source}}" mode="aspectFit" style="width: 100%; height: {{item.extras[index].height}}rpx" data-index="{{pageIndex + '_' + index}}" bindload="imageLoad"/>
+                        </view>
+                    </view>
+                    <view wx:for="{{item.scores}}" style="color: #868d92; font-size: 28rpx; padding-right:12rpx;">
+                        <view class="flex height-80 border-bottom-thin" data-scores="{{item}}"
+                              bindtap="handleScoreDetail">
+                            <view class="border-style flex-3 flex center">
+                                <view class="ellipse-text text-item">{{item.name || '无'}}</view>
+                            </view>
+                            <view class="border-style flex-2 flex center">
+                                <view class="ellipse-text text-item">{{item.type || '无'}}</view>
+                            </view>
+                            <view class="border-style flex-1 flex center">
+                                <view class="flex center">{{item.point || '无'}}</view>
+                            </view>
+                            <view class="flex-1 flex center">
+                                <view class="flex center">{{item.score || '无'}}</view>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <view style="height:280rpx"/>
+            </view>
+        </view>
+        <view class="{{'school-year-bar position-fixed width-full' + (state.iphoneX ? ' bottom' : '')}}">
+            <view class="line-gradient" style="height: 6rpx;"/>
+            <view class="flex height-80" style="background: #fff; color: #868d92; font-size: 28rpx">
+                <block wx:for="{{state.yearArr}}">
+                    <view
+                            class="flex-1 flex center year-item {{ index == state.selectInx ?  'selected-font-color' : ''}}"
+                            data-year="{{item}}" bindtap="handleChoiceYear" data-index="{{index}}">
+                        {{item}}
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+
+    <!--弹出菜单-->
+    <view class="position-absolute menu-modal z-index-3" wx:if="{{state.showMenu}}" catchtap="handleShowMenu">
+        <view class="menu-modal-item border-bottom-thin flex center-v" bindtap="handleUpdate">
+            <image class="icon-image menu-modal-item-icon" src="../../images/refresh.png"/>
+            <view>更新</view>
+        </view>
+        <view class="menu-modal-item border-bottom-thin flex center-v" bindtap="handleLogout">
+            <image class="icon-image menu-modal-item-icon" src="../../images/logout.png"/>
+            <view>注销</view>
+        </view>
+        <view class="menu-modal-item flex center-v" bindtap="handleFeedback">
+            <image class="icon-image menu-modal-item-icon" src="../../images/ask.png"/>
+            <view>问题反馈</view>
+        </view>
+    </view>
+
+</view>

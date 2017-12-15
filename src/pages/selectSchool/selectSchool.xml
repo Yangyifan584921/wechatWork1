@@ -1,0 +1,20 @@
+<view  class="{{state.iphoneX?'bottomBar':''}}" style="overflow: hidden; height: 100%;">
+    <!--学校输入框-->
+    <view class="width-full select-school-wrap position-fixed" >
+        <input class="select-school-input"
+               placeholder="输入学校全称进行搜索"
+               bindinput="handleInput"
+               type="text"
+        />
+    </view>
+    <!--备选学校列表-->
+    <view class="school-list" style=" height: calc(100% - 120rpx); overflow-y: scroll;">
+        <view>
+            <block wx:for="{{state.schoolList}}">
+                <view class="school-list-item" bindtap="handleSelect" data-id="{{item.id}}" data-name="{{item.name}}">
+                    {{item.name}}
+                </view>
+            </block>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,57 @@
+<view class="home-container">
+    <swiper class="banner"  >
+        <view class="bannerFontTop">{{state.name}}</view>
+        <view class="bannerFontBot">{{state.disc}}</view>
+        <block wx:for="{{state.FeaturesImage}}" >
+            <swiper-item>
+                <image class="bannerImage" src="../../images/banner.png"/>
+            </swiper-item>
+        </block>
+        <view class="bannerBorder"></view>
+    </swiper>
+    <view class="func-container" wx:if="{{state.currentTab=='func'}}">
+      <view class="flex font-primary-color flexWrap func-items">
+          <block wx:for="{{state.featuresMap}}">
+              <view class="nav-item {{((index+1) % 3) ? '' : 'nav-right'}}" wx:key="{{index}}" bindtap="entryPage" data-item='{{item}}'>
+                  <view class="flex menu-item">
+                      <view class="flex-1 flex center justify-start flexCol">
+                          <image  class="index-menu-icon" src="../../images/{{item.icon}}.png"/>
+                          <view class="menu-item-title">{{item.name||item.module}}</view>
+                      </view>
+                  </view>
+              </view>
+          </block>
+      </view>
+    </view>
+    <view  wx:if="{{state.currentTab=='mine'}}">
+        <view class="selectSchool flex" bindtap="changeSchool">
+            <view class="schoolInfo flex-column">
+                <p class="school">学校</p>
+                <p class="schoolName">{{state.schoolName}}</p>
+            </view>
+            <view class="changeSchool">
+                <image class="img" src="../../images/chooseState.png"/>
+            </view>
+        </view>
+        <view class="bindEdu flex" bindtap="changeState">
+            <view class="eduInfo  flex-column">
+                <p class="edu">教务信息</p>
+                <p class="eduName">账号：{{state.bindState}}</p>
+            </view>
+            <view class="changeBind">
+                <image class="img" src="../../images/chooseState.png"/>
+            </view>
+        </view>
+    </view>
+    <view class="index-bottom {{state.iphoneX ? ' bottom tarBarX' : 'tarBar'}}">
+        <view class="borderStyle"></view>
+        <view class="flex bottom-text_container">
+            <view  class="tarBarFunc" data-tab="func" bindtap="currentedTab">
+                <view class="func {{state.currentTab=='func'?'is-active':''}}">功能</view>
+            </view>
+            <view  class="tarBarMine"  data-tab="mine" bindtap="currentedTab">
+                <view class="mine  {{state.currentTab=='mine'?'is-active':''}}">我的</view>
+            </view>
+        </view>
+    </view>
+</view>

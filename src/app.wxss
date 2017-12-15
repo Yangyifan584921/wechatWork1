@@ -1,0 +1,9 @@
+@import "style/common.wxss";
+@import "components/wetoast/wetoast.wxss";
+page {
+    height: 100%;
+
+    font-size: 28rpx;
+    font-family: "PingFang SC";
+    background-color: #feffff;
+}
